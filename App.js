@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {View, Text, StyleSheet, Button, Alert} from 'react-native'
 import {  createAppContainer} from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-//import { Icon } from 'react-native-elements'
+import { Icon } from 'react-native-elements'
 import {createStackNavigator} from 'react-navigation-stack'
 
 //Screens
@@ -31,7 +31,8 @@ const App = createBottomTabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === 'Welcome') {
-          iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+          //iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+          iconName = <Icon name='home' />
         } else if (routeName === 'Add') {
           iconName = `ios-options${focused ? '' : '-outline'}`;
         }

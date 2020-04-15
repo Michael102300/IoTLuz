@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
-//import { Icon } from 'react-native-elements' 
+import { Icon } from 'react-native-elements' 
 
 class Welcome extends Component{
 
