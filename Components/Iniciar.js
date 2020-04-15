@@ -26,8 +26,8 @@ const DATA = [
 
 function Item({ title }) {
   return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
+    <View style={Styles.item}>
+      <Text style={Styles.title}>{title}</Text>
     </View>
   );
 }
@@ -56,7 +56,7 @@ class Add extends Component{
           </View>
 
 
-          <SafeAreaView style={styles.containerr}>
+          <SafeAreaView style={Styles.containerr}>
             <FlatList
               data={DATA}
               renderItem={({ item }) => <Item title={item.title} />}
@@ -99,22 +99,24 @@ class Add extends Component{
 const Styles = StyleSheet.create({
 
   containerr: {
-    flex: 1,
+    flex: 0.4,
+    //margin:10
     marginTop: Constants.statusBarHeight,
   },
 
 
   item: {
     backgroundColor: '#f9c2ff',
-    padding: 20,
+    padding: 5,
     marginVertical: 8,
-    marginHorizontal: 16,
+    marginHorizontal: 5,
   },
 
 
   title: {
-    fontSize: 32,
+    fontSize: 25,
   },
+
 
   container :{
     flex : 1,
