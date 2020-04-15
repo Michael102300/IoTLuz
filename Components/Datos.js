@@ -9,17 +9,18 @@ class Datos extends Component{
     }
 
     render(){
+        const { navigation } = this.props;
         return(
 
-            <View style={Style.container, Style.header}>
-                <View>
+            <View style={Styles.container}>
+                <View style={Styles.header}>
                     <Button title="Volver al Form" onPress={this.form}>
                     </Button>
                 </View>
 
-                <View>
-                    <Text>
-                        itemIdxd: {JSON.stringify(navigation.getParam('itemId', 'NO-ID'))}
+                <View style={Styles.header}>
+                    <Text >
+                        itemId: {JSON.stringify(navigation.getParam('itemId', 'NO-ID'))}
                     </Text>
                 </View>
             </View>
@@ -35,15 +36,17 @@ const Styles=StyleSheet.create({
     container :{
         flex : 1,
         backgroundColor : '#E4F2F8',
-        padding: 10
+        padding: 10,
+        flexDirection:'column',
+        justifyContent:'space-between'
       },
     
     
       header: {
-        flex: 2,
-        flexDirection:'column',
+        flex: 1,
+        //flexDirection:'column',
         alignItems : 'flex-start',
-        justifyContent: 'space-between'
+        //justifyContent: 'space-between'
     
       },
 
