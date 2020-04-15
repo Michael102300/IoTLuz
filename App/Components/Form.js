@@ -8,6 +8,9 @@ class Form extends Component{
     this.props.navigation.navigate('Add')
     
   }
+  datoo = () =>{
+    this.props.navigation.navigate('Datos',{itemId: 95,})
+  }
   cancelar = () =>{
     this.props.navigation.navigate('Add')
   }
@@ -32,10 +35,10 @@ class Form extends Component{
         </View>
         <View style = {Styles.body}>
           <View style ={Styles.bodyLeft}>
-          
+
           </View>
           <View style ={Styles.bodyRight}>
-           <TouchableOpacity onPress={this.agregar}>
+           <TouchableOpacity onPress={this.datoo}>
               <View style={Styles.buttonBody}>
                 <Text style={Styles.buttonText}>Capturar</Text>
              </View>
