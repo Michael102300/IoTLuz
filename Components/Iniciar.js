@@ -2,75 +2,117 @@ import React, {Component} from 'react'
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
 
 class Add extends Component{
+
   agregar = () =>{
     this.props.navigation.navigate('Form')
   }
+
   cancelar = () =>{
     this.props.navigation.navigate('Welcome')
   }
-  render(){
-    return(
-      <View style={Styles.container}>
-        <View style = {Styles.header}>
-          <Text style= {Styles.paragraph}> Añade los cuartos que posees y los cuales quieres controlar. 
-          </Text>
-        </View>
-        <View style = {Styles.finish}>
-        <TouchableOpacity onPress={this.agregar}>
-          <View style={Styles.button}>
-            <Text style={Styles.buttonText}>Añadir +</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={this.cancelar}>
-          <View style={Styles.button}>
-            <Text style={Styles.buttonText}>Eliminar -</Text>
-          </View>
-        </TouchableOpacity>
-        </View>
-        
-      </View>
-    )
 
-  }
+    render(){
+      return(
+        <View style={Styles.container}>
+
+
+          <View style = {Styles.header}>
+            <Text style= {Styles.paragraph}> 
+              Añade los cuartos que posees y los cuales quieres controlar. 
+            </Text>
+          </View>
+
+
+          <View style = {Styles.foot}>    
+
+            <TouchableOpacity onPress={this.agregar}>
+              <View style={Styles.button}>
+                <Text style={Styles.buttonText}>
+                  Añadir +
+                </Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={this.cancelar}>
+              <View style={Styles.button}>
+                <Text style={Styles.buttonText}>
+                  Eliminar -
+                </Text>
+              </View>
+            </TouchableOpacity>
+    
+          </View>
+          
+
+        </View>
+      )
+
+    }
 }
 const Styles = StyleSheet.create({
+
   container :{
     flex : 1,
     backgroundColor : '#E4F2F8'
   },
+
+
   header: {
-    flex: 0.5,
+    flex: 0.3,
     alignItems : 'center',
     justifyContent: 'flex-end'
   },
+
+
   paragraph :{
-    fontSize : 30,
+    fontSize : 18,
     color : 'black',
-    textAlign : 'center'
-    //fontFamily: "Arial"
+    textAlign : 'center',
    },
-  finish:{
-    flex: 1,
-    margin: 50,
+
+
+  foot:{
+    flex: 0.3,
+    margin: 1,
     justifyContent: 'space-around',
     flexDirection : 'row',
     alignItems: 'flex-end',
-    marginBottom: 50
+    marginBottom: 5
   },
+
+
   button: {
-    borderWidth : 1,
+    flex:0.5,
+    borderWidth : 1.2,
     borderColor: '#626AE5',
-    width: 234,
-    height: 57,
+    alignContent:'flex-end',
     backgroundColor: 'white',
-    borderRadius: 29
+    borderRadius: 11,
+    margin:15
   },
+
+
   buttonText: {
     textAlign: 'center',
     padding: 10,
     color: 'black',
-    fontSize: 23
+    fontSize: 24
+  },
+
+  añdir_button:{
+    //alignItems:'',
+
+  },
+
+
+  eliminar_button:{
+    textAlign:'right',
   }
+
+
+
+
+
   
 })
 export default Add

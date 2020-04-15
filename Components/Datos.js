@@ -8,8 +8,10 @@ class Datos extends Component{
         this.props.navigation.navigate('Form')
     }
 
+
+
     render(){
-        const { navigation } = this.props;
+        //const { navigation } = this.props;
         return(
 
             <View style={Styles.container}>
@@ -20,7 +22,10 @@ class Datos extends Component{
 
                 <View style={Styles.header}>
                     <Text >
-                        itemId: {JSON.stringify(navigation.getParam('itemId', 'NO-ID'))}
+                        NumeroLista: {JSON.stringify(this.props.navigation.getParam('NumeroLista','NO-ID'))}
+                    </Text>
+                    <Text>
+                        UsuarioLista: {(this.props.navigation.getParam('UsuarioLista','default value'))}
                     </Text>
                 </View>
             </View>

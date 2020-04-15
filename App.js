@@ -5,16 +5,20 @@ import {createStackNavigator} from 'react-navigation-stack'
 import Form from './Components/Form'
 import Welcome from './Components/Welcome'
 import Add from './Components/Iniciar'
+import Datos from './Components/Datos'
 
 const App = createStackNavigator(
-  { Welcome: Welcome ,
+  { 
+    Welcome: Welcome ,
     Add : Add,
-    Form: Form
+    Form: Form,
+    Datos: Datos
   },
+
   {
-    
     initialRouteName: 'Welcome'
   }
+  
 )
 export default createAppContainer(App) 
  
