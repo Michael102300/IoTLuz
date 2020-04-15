@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
-//import {Icon} from 'native-base' 
+import { Icon } from 'react-native-elements' 
 
 class Welcome extends Component{
 
@@ -16,7 +16,7 @@ class Welcome extends Component{
           <View style = {Styles.header}>
             <Text style= {Styles.paragraph}> 
               BIENVENIDO
-
+              <Icon name='home' />
             </Text>
           </View>
 
