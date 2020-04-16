@@ -23,6 +23,7 @@ const DATA = [
   },
 ];
 //esto es un item xd :V 
+//esto si sirvio asi perro
 function Item({ title }) {
   return (
     <View style={Styles.item}>
