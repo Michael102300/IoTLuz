@@ -8,22 +8,8 @@ import {View,
   FlatList
 } from 'react-native'
 
-const DATA = [
-  {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
-  },
-  {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-];
-//esto es un item xd :V 
-//esto si sirvio asi perro
+import DATA from './data/data.json'
+
 function Item({ title }) {
   return (
     <View style={Styles.item}>
@@ -52,26 +38,15 @@ class Lista extends Component{
               Añade los cuartos que posees y los cuales quieres controlar. 
               Datos:
             </Text>
-            <Text >
-              NumeroLista: {JSON.stringify(this.props.navigation.getParam('NumeroLista','NO-ID'))}
-            </Text>
-            <Text>
-              UsuarioLista: {(this.props.navigation.getParam('UsuarioLista','default value'))}
-            </Text>
           </View>
-
-
-          <SafeAreaView style={Styles.containerr}>
+          <View style={Styles.containerr}>
             <FlatList
               data={DATA}
               renderItem={({ item }) => <Item title={item.title} />}
               keyExtractor={item => item.id}
             />
-          </SafeAreaView>
-
-
+          </View>
           <View style = {Styles.footer}>    
-
             <TouchableOpacity onPress={this.agregar}>
               <View style={Styles.button}>
                 <Text style={Styles.buttonText}>
@@ -79,7 +54,6 @@ class Lista extends Component{
                 </Text>
               </View>
             </TouchableOpacity>
-
             <TouchableOpacity onPress={this.cancelar}>
               <View style={Styles.button}>
                 <Text style={Styles.buttonText}>

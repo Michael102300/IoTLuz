@@ -6,16 +6,30 @@ import {View,
   Alert, 
   TextInput
 } from 'react-native'
+import data from './data/data.json'
 
+var id=0
 
 class Form extends Component{
-  
+  constructor(props){
+    super(props)
+
+    this.state={
+      nombre:''
+    }
+  }
   _onPressButton() {Alert.alert('Sirve el boton')}
 
-  datoo = () =>{
-    this.props.navigation.navigate('Lista', {NumeroLista: 13, UsuarioLista:'Kevin Guzmán',})
+  agregar=()=>{
+    id = id +1
+    data.push({
+      "title" : this.state.nombre
+    })
+    this.props.navigation.navigate('Lista'),
+    this.setState({
+      nombre: ''
+    })
   }
-
 
   render(){
     return(
@@ -28,7 +42,8 @@ class Form extends Component{
               <Text style= {Styles.paragraph}>
                   Nombre: 
               </Text>
-              <TextInput style={Styles.name} placeholder="NOMBRE"/>   
+              <TextInput style={Styles.name} placeholder="NOMBRE" 
+                value={this.state.nombre} onChangeText={(nombre)=>{this.setState({nombre})}}/>   
 
               <Text style= {Styles.paragraph}>
                   Numero: 
@@ -57,7 +72,7 @@ class Form extends Component{
 
         <View style = {Styles.footer}>
           <View style={Styles.footerLeft}>
-            <Button title ={"AGREGAR"} onPress={this.datoo} />
+            <Button title ={"AGREGAR"} onPress={this.agregar} />
           </View>
 
           <View style={Styles.footerRight}>
