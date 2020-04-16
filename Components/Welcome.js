@@ -16,11 +16,9 @@ class Welcome extends Component{
           <View style = {Styles.header}>
             <Text style= {Styles.paragraph}> 
               BIENVENIDO
-              <Icon name='home' />
             </Text>
+            <Icon name='home' />
           </View>
-
-
           <View style = {Styles.finish}>
             <TouchableOpacity onPress={this.inicio}>
               <View style={Styles.button}>
