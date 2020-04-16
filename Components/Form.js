@@ -13,7 +13,7 @@ class Form extends Component{
   _onPressButton() {Alert.alert('Sirve el boton')}
 
   datoo = () =>{
-    this.props.navigation.navigate('Datos', {NumeroLista: 13, UsuarioLista:'Kevin Guzmán',})
+    this.props.navigation.navigate('Lista', {NumeroLista: 13, UsuarioLista:'Kevin Guzmán',})
   }
 
 
@@ -39,7 +39,7 @@ class Form extends Component{
             <View style={Styles.headerRight}>
 
               <View style={Styles.button_Space}>
-                <Button title ={"CAPTURAR"}  style={Styles.boton} onPress={this.datoo}/>
+                <Button title ={"CAPTURAR"}  style={Styles.boton} onPress={this._onPressButton} />
               </View>
 
               <View style={Styles.button_Space}>
@@ -57,7 +57,7 @@ class Form extends Component{
 
         <View style = {Styles.footer}>
           <View style={Styles.footerLeft}>
-            <Button title ={"AGREGAR"} onPress={this._onPressButton}/>
+            <Button title ={"AGREGAR"} onPress={this.datoo} />
           </View>
 
           <View style={Styles.footerRight}>

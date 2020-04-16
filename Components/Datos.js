@@ -7,11 +7,13 @@ class Datos extends Component{
     form = () =>{
         this.props.navigation.navigate('Form')
     }
+    
 
 
 
     render(){
         //const { navigation } = this.props;
+        //const { navigate } = this.props.navigation;
         return(
 
             <View style={Styles.container}>

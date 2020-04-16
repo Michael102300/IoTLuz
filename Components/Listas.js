@@ -50,6 +50,13 @@ class Lista extends Component{
           <View style = {Styles.header}>
             <Text style= {Styles.paragraph}> 
               Añade los cuartos que posees y los cuales quieres controlar. 
+              Datos:
+            </Text>
+            <Text >
+              NumeroLista: {JSON.stringify(this.props.navigation.getParam('NumeroLista','NO-ID'))}
+            </Text>
+            <Text>
+              UsuarioLista: {(this.props.navigation.getParam('UsuarioLista','default value'))}
             </Text>
           </View>
 
@@ -98,7 +105,7 @@ const Styles = StyleSheet.create({
 
   containerr: {
     flex: 0.4,
-    //margin:10
+    margin:'5%',
     marginTop: Constants.statusBarHeight,
   },
 

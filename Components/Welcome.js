@@ -35,7 +35,7 @@ class Welcome extends Component{
 
               <View style={Styles.icnonInput}>
                 <Icon name='security' />
-                <TextInput style={Styles.textin} placeholder={"Contraseña"} />
+                <TextInput style={Styles.textin} placeholder={"      Contraseña      "} />
               </View>
           </View>
 
