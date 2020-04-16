@@ -33,7 +33,7 @@ function Item({ title }) {
   );
 }
 
-class Add extends Component{
+class Lista extends Component{
   agregar = () =>{
     this.props.navigation.navigate('Form')
   }

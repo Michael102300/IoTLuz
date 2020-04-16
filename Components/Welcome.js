@@ -5,7 +5,7 @@ import { Icon } from 'react-native-elements'
 class Welcome extends Component{
 
   inicio = () => {
-    this.props.navigation.navigate('Add')
+    this.props.navigation.navigate('Lista')
   }
 
     render(){
