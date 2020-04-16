@@ -13,6 +13,7 @@ import {View,
 } from 'react-native'
 
 
+
 class Welcome extends Component{
 
   constructor(props){
@@ -44,7 +45,7 @@ class Welcome extends Component{
 
           <View style = {Styles.header}>
             <Text style= {Styles.paragraph}> 
-              Bienvenido a SmartHouse App
+              Bienvenido a SmartHouse App {(this.props.navigation.getParam('UserName','default value'))}
             </Text>
           </View>
 
@@ -75,7 +76,7 @@ class Welcome extends Component{
           </View>
 
           <View style={Styles.buttonS} >
-            <Button title={"Registrarme"} onPress={this.log} />
+            <Button title={"Registrarme"} onPress={this.reg} />
           </View>
 
 
