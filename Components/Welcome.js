@@ -19,6 +19,9 @@ class Welcome extends Component{
             </Text>
             <Icon name='home' />
           </View>
+
+           
+          
           <View style = {Styles.finish}>
             <TouchableOpacity onPress={this.inicio}>
               <View style={Styles.button}>
@@ -44,6 +47,7 @@ const Styles = StyleSheet.create({
 
   header: {
     flex: 2,
+    paddingVertical:'20%',
     alignItems : 'center',
     justifyContent: 'center'
   },
