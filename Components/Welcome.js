@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
 import { Icon } from 'react-native-elements' 
+import {createStackNavigator} from 'react-navigation-stack'
+import {  createAppContainer} from 'react-navigation'
+import Registrarse from './Register'
+
 import {View,
    Text, 
    StyleSheet, 
@@ -8,47 +12,80 @@ import {View,
    Button
 } from 'react-native'
 
+
+
 class Welcome extends Component{
 
-  inicio = () => {
-    this.props.navigation.navigate('Lista')
+  constructor(props){
+    super(props)
+    this.state={
+      sh:'Smart House App',
+      UserName:'',
+      Password:'',
+      bienvenido:'¡Bienvenido!'
+    }
+  }
+
+
+  reg = () => {
+    this.props.navigation.navigate('Registrarse')
   }
 
     render(){
+
+      const{sh}=this.state
+      const{bienvenido}=this.state
+      let {UserName}=this.state
+      let {Password}=this.state
+
+
       return(
         <View style={Styles.container}>
 
 
           <View style = {Styles.header}>
             <Text style= {Styles.paragraph}> 
-              BIENVENIDO
+              Bienvenido a SmartHouse App {(this.props.navigation.getParam('UserName','default value'))}
             </Text>
-            <Icon name='home' />
           </View>
 
 
           <View style={Styles.login}>
               <View style={Styles.icnonInput}>
-                <Icon name='person' />
-                <TextInput style={Styles.textin} placeholder={"Nombre de usuario"} />
+                <Icon name='person'  />
+                <TextInput 
+                  style={Styles.textin} placeholder={"Nombre de usuario"} 
+                  onChangeText={(UserName) => this.setState({UserName})}
+                  maxLength={18} 
+                />
               </View>
 
               <View style={Styles.icnonInput}>
-                <Icon name='security' />
-                <TextInput style={Styles.textin} placeholder={"      Contraseña      "} />
+                <Icon name='security'  />
+                <TextInput 
+                  style={Styles.textin} 
+                  placeholder={"      Contraseña       "}
+                  onChangeText={(Password) => this.setState({Password})}
+                />
               </View>
           </View>
 
 
           <View style={Styles.buttonS} >
-            <Button title={"Entrar"} />
+            <Button title={"Entrar"}  />
+          </View>
+
+          <View style={Styles.buttonS} >
+            <Button title={"Registrarme"} onPress={this.reg} />
           </View>
 
 
         </View>
+
       )
     }
 }
+
 const Styles = StyleSheet.create({
 
   container :{
@@ -58,26 +95,28 @@ const Styles = StyleSheet.create({
   },
 
   header: {
-    flex: 1,
-    
+    flex: 1.2,
+    paddingVertical:'10%',
     alignItems : 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    flexDirection:'column',
+    
   },
 
   paragraph :{
-    fontSize : 43,
-    color : 'black',
+    fontSize : 33,
+    //color : 'black',
     textAlign : 'center',
     color: 'rgb(20,10,50)',
    },
 
-  finish:{
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection : 'column',
-    margin : 30,
-  },
+   paragraph2:{
+     fontSize: 13,
+     marginVertical:'1.5%',
+     textAlign:'center',
+     color:'rgba(150,90,255,0.9)'
+   },
+
 
   button: {
     borderWidth : 0.5,
@@ -98,27 +137,52 @@ const Styles = StyleSheet.create({
   textin:{
     fontSize:15,
     alignSelf:'flex-start',
+    paddingVertical:'1%',
   },
 
   icnonInput:{
     flexDirection:'row',
     padding:'2%',
     alignSelf:'center',
+    //borderWidth:0.35,
+    //borderColor:'gray',
+    
   },
 
   login:{
-    marginVertical:'30%',
+    marginVertical:'20%',
+    marginHorizontal:'10%',
     flex:1.1,
     alignItems:'center',
     flexDirection:'column',
   },
 
   buttonS:{
-    padding:'4%',
-    paddingHorizontal:'15%',
+    paddingVertical:'4%',
+    paddingHorizontal:'17%',
     flex:1,
     alignContent:'center'
   },
   
 })
-export default Welcome
+
+
+
+
+const  UserStack = createAppContainer(createStackNavigator(
+  {
+  Welcome:Welcome,
+  Registrarse:Registrarse,
+  },
+  {
+    initialRouteName: 'Welcome',
+  }
+
+))
+
+
+export default UserStack
+
+
+
+//export default Welcome
