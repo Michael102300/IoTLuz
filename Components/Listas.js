@@ -72,7 +72,7 @@ const Styles = StyleSheet.create({
 
   container :{
     flex : 1,
-    backgroundColor : '#E4F2F8'
+    backgroundColor : 'white'
   },
 
 

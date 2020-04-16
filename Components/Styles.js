@@ -20,8 +20,8 @@ const Styles = StyleSheet.create({
        borderRadius: 20
      },
     buttonPrimary: {
-      backgroundColor: '#626AE5',
-      borderRadius: 13,
+      backgroundColor: '#2196f3',
+      borderRadius: 11,
     },
     buttonTextPrimary: {
       textAlign: 'center',
@@ -31,7 +31,7 @@ const Styles = StyleSheet.create({
     },
     buttonSecondary: {
       borderWidth : 1.2,
-      borderColor: '#626AE5',
+      borderColor: '#2196f3',
       backgroundColor: 'white',
       borderRadius: 11,
       margin: 15,
@@ -40,8 +40,8 @@ const Styles = StyleSheet.create({
     buttonTextSecondary: {
       textAlign: 'center',
       padding: 10,
-      color: 'black',
-      fontSize: 20
+      color: '#2196f3',
+      fontSize: 'medium'
     },
     item: {
       backgroundColor: '#f9c2ff',
