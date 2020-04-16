@@ -22,11 +22,12 @@ const DATA = [
     title: 'Third Item',
   },
 ];
-
+//esto es un item xd :V 
 function Item({ title }) {
   return (
     <View style={Styles.item}>
       <Text style={Styles.title}>{title}</Text>
+      
     </View>
   );
 }
