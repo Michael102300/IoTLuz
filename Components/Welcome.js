@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
 import { Icon } from 'react-native-elements' 
+import {createStackNavigator} from 'react-navigation-stack'
+import {  createAppContainer} from 'react-navigation'
+import Registrarse from './Register'
+
 import {View,
    Text, 
    StyleSheet, 
@@ -7,6 +11,7 @@ import {View,
    TextInput,
    Button
 } from 'react-native'
+
 
 class Welcome extends Component{
 
@@ -20,8 +25,9 @@ class Welcome extends Component{
     }
   }
 
-  inicio = () => {
-    this.props.navigation.navigate('Lista')
+
+  reg = () => {
+    this.props.navigation.navigate('Registrarse')
   }
 
     render(){
@@ -39,9 +45,6 @@ class Welcome extends Component{
           <View style = {Styles.header}>
             <Text style= {Styles.paragraph}> 
               Bienvenido a SmartHouse App
-            </Text>
-            <Text style={Styles.paragraph2}>
-              Es hora de que registres tu usuario
             </Text>
           </View>
 
@@ -67,22 +70,21 @@ class Welcome extends Component{
           </View>
 
 
-          <View style={{alignItems:'center',paddingVertical:'2%'}}>
-            <Text>
-              Bienvenido {UserName}
-            </Text>
+          <View style={Styles.buttonS} >
+            <Button title={"Entrar"}  />
           </View>
 
-
           <View style={Styles.buttonS} >
-            <Button title={"Entrar"} />
+            <Button title={"Registrarme"} onPress={this.log} />
           </View>
 
 
         </View>
+
       )
     }
 }
+
 const Styles = StyleSheet.create({
 
   container :{
@@ -155,11 +157,31 @@ const Styles = StyleSheet.create({
   },
 
   buttonS:{
-    paddingVertical:'8%',
+    paddingVertical:'4%',
     paddingHorizontal:'17%',
     flex:1,
     alignContent:'center'
   },
   
 })
-export default Welcome
+
+
+
+
+const  UserStack = createAppContainer(createStackNavigator(
+  {
+  Welcome:Welcome,
+  Registrarse:Registrarse,
+  },
+  {
+    initialRouteName: 'Welcome',
+  }
+
+))
+
+
+export default UserStack
+
+
+
+//export default Welcome
