@@ -4,16 +4,15 @@ import {View,
   Text, 
   StyleSheet, 
   TouchableOpacity,
-  SafeAreaView,
   FlatList
 } from 'react-native'
-
+import style from './Styles'
 import DATA from './data/data.json'
 
 function Item({ title }) {
   return (
-    <View style={Styles.item}>
-      <Text style={Styles.title}>{title}</Text>
+    <View style={style.item}>
+      <Text style={style.title}>{title}</Text>
       
     </View>
   );
@@ -47,20 +46,7 @@ class Lista extends Component{
             />
           </View>
           <View style = {Styles.footer}>    
-            <TouchableOpacity onPress={this.agregar}>
-              <View style={Styles.button}>
-                <Text style={Styles.buttonText}>
-                  Añadir +
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={this.cancelar}>
-              <View style={Styles.button}>
-                <Text style={Styles.buttonText}>
-                  Eliminar -
-                </Text>
-              </View>
-            </TouchableOpacity>
+            
     
           </View>
           
@@ -81,19 +67,6 @@ const Styles = StyleSheet.create({
     flex: 0.4,
     margin:'5%',
     marginTop: Constants.statusBarHeight,
-  },
-
-
-  item: {
-    backgroundColor: '#f9c2ff',
-    padding: 5,
-    marginVertical: 8,
-    marginHorizontal: 5,
-  },
-
-
-  title: {
-    fontSize: 25,
   },
 
 
@@ -126,40 +99,6 @@ const Styles = StyleSheet.create({
     alignItems: 'flex-end',
     marginBottom: 5
   },
-
-
-  button: {
-    flex:0.5,
-    borderWidth : 1.2,
-    borderColor: '#626AE5',
-    alignContent:'flex-end',
-    backgroundColor: 'white',
-    borderRadius: 11,
-    margin:15
-  },
-
-
-  buttonText: {
-    textAlign: 'center',
-    padding: 10,
-    color: 'black',
-    fontSize: 24
-  },
-
-  añdir_button:{
-    //alignItems:'',
-
-  },
-
-
-  eliminar_button:{
-    textAlign:'right',
-  }
-
-
-
-
-
   
 })
 export default Lista

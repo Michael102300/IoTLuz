@@ -6,27 +6,6 @@ const Styles = StyleSheet.create({
       backgroundColor : '#E4F2F8',
      // padding: 20
     },
-    header: {
-      flex: 2,
-    },
-    headerTop: {
-      flex: 1
-    },
-    headerBottom: {
-      flex: 1
-    },
-    body:{
-      flex: 4,
-      flexDirection: 'row'
-    },
-    bodyRight:{
-      flex: 2,
-      alignItems: 'center',
-      paddingTop: 10
-    },
-    bodyLeft:{
-      flex: 2
-    },
     paragraph :{
       fontSize : 20,
       color : 'black'
@@ -40,51 +19,38 @@ const Styles = StyleSheet.create({
        fontSize: 20,
        borderRadius: 20
      },
-    finish:{
-      flex: 2,
-      margin: 5,
-      flexDirection : 'row',
-      justifyContent:'center'
+    buttonPrimary: {
+      backgroundColor: '#626AE5',
+      borderRadius: 13,
     },
-    finishRight:{
-      flex: 1,
-      alignItems: 'center'
+    buttonTextPrimary: {
+      textAlign: 'center',
+      padding: 10,
+      color: 'white',
+      fontSize: 'medium'
     },
-    finishLeft:{
-      flex: 1,
-      alignItems: 'center'
-    },
-    button: {
-      borderWidth : 1,
+    buttonSecondary: {
+      borderWidth : 1.2,
       borderColor: '#626AE5',
-      width: 150,
-      height: 57,
       backgroundColor: 'white',
-      borderRadius: 29
+      borderRadius: 11,
+      margin: 15,
+      marginBottom: 10
     },
-    buttonText: {
+    buttonTextSecondary: {
       textAlign: 'center',
       padding: 10,
       color: 'black',
       fontSize: 20
     },
-    buttonBody:{
-      borderWidth : 1,
-      borderColor: '#626AE5',
-      width: 200,
-      height: 57,
-      backgroundColor: 'white',
-      borderRadius: 29,
-      marginBottom: 10
-    },
     item: {
       backgroundColor: '#f9c2ff',
-      padding: 20,
+      padding: 5,
       marginVertical: 8,
-      marginHorizontal: 16,
+      marginHorizontal: 5,
     },
     title: {
-      fontSize: 32,
+      fontSize: 25,
     }
   })
   export default Styles 

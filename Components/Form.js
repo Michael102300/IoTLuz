@@ -4,10 +4,11 @@ import {View,
   StyleSheet, 
   Button, 
   Alert, 
-  TextInput
+  TextInput,
+  TouchableOpacity
 } from 'react-native'
 import data from './data/data.json'
-
+import styles from './Styles'
 var id=0
 
 class Form extends Component{
@@ -38,7 +39,7 @@ class Form extends Component{
         
         <View style = {Styles.header}>
 
-            <View style={Styles.headerLeft}>
+            <View style={Styles.headerTop}>
               <Text style= {Styles.paragraph}>
                   Nombre: 
               </Text>
@@ -51,32 +52,63 @@ class Form extends Component{
               <TextInput style={Styles.name} placeholder="NUMERO"/>
             </View>
 
-            <View style={Styles.headerRight}>
+            <View style={Styles.headerBottom}>
 
-              <View style={Styles.button_Space}>
-                <Button title ={"CAPTURAR"}  style={Styles.boton} onPress={this._onPressButton} />
-              </View>
-
-              <View style={Styles.button_Space}>
-                <Button title ={"ESCOGER"} onPress={this._onPressButton}/>
-              </View>
-
-              <View style={Styles.button_Space}>
-                <Button title ={"ELIMINAR"}  onPress={this._onPressButton}/>
-              </View>
+              
             
-          </View>
+            </View>
 
         </View>
+        <View style={Styles.body}>
+          <View style={Styles.bodyRigth}>
+            
+            <TouchableOpacity onPress={this._onPressButton}>
+              <View style={styles.buttonSecondary}>
+                <Text style={styles.buttonTextSecondary}>
+                  CAPTURAR
+                </Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={this._onPressButton}>
+              <View style={styles.buttonSecondary}>
+                <Text style={styles.buttonTextSecondary}>
+                  ESCOGER
+                </Text>
+              </View>
+            </TouchableOpacity> 
+            <TouchableOpacity onPress={this._onPressButton}>
+              <View style={styles.buttonSecondary}>
+                <Text style={styles.buttonTextSecondary}>
+                  ELIMINAR
+                </Text>
+              </View>
+            </TouchableOpacity>
+              
+          </View>
+          <View style={Styles.bodyLeft}>
 
+          </View>
+        </View>
 
         <View style = {Styles.footer}>
           <View style={Styles.footerLeft}>
-            <Button title ={"AGREGAR"} onPress={this.agregar} />
+          <TouchableOpacity onPress={this.agregar}>
+              <View style={styles.buttonPrimary}>
+                <Text style={styles.buttonTextPrimary}>
+                  Añadir +
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
 
           <View style={Styles.footerRight}>
-            <Button title ={"CANCELAR"} onPress={this._onPressButton}/>
+            <TouchableOpacity onPress={this.cancelar}>
+              <View style={styles.buttonPrimary}>
+                <Text style={styles.buttonTextPrimary}>
+                  Eliminar -
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
 
         </View>
@@ -98,31 +130,33 @@ const Styles = StyleSheet.create({
 
   header: {
     flex: 2,
-    paddingVertical:'15%',
-    flexDirection:'row',
-    alignItems : 'flex-start',
-    justifyContent: 'space-between'
-
   },
 
 
-  headerLeft:{
-    flex:1,
-    margin:2
+  headerTop: {
+    flex: 1
   },
 
 
-  headerRight:{
-    flex:1,
-    paddingLeft:10,
-    flexDirection:'column',
-    justifyContent:'space-between',
+  headerBottom: {
+    flex: 1
+  },
+
+  body:{
+    flex: 4,
+    flexDirection: 'row-reverse'
   },
 
 
-  button_Space:{
-    margin:2,
-    paddingVertical:3
+  bodyRight:{
+    flex: 2,
+    alignItems: 'center',
+    paddingTop: 10
+  },
+
+
+  bodyLeft:{
+    flex: 2
   },
 
 
@@ -130,40 +164,30 @@ const Styles = StyleSheet.create({
     fontSize : 20,
     color : 'black',
     textAlign : 'center',
-   },
+ },
 
 
-   name:{
+  name:{
      borderWidth: 1,
      borderColor: 'gray',
      padding: 2
-   },
+  },
 
 
   footer:{
-    padding:'3%',
-    flex: 1,
-    justifyContent: 'space-between',
+    flex: 2,
+    margin: 5,
     flexDirection : 'row',
-    alignItems: 'flex-end',
   },
-
-
   footerLeft:{
     flex:1,
-    margin:5
+    margin:5,
+    alignItems:'center'
   },
-
-
   footerRight:{
     flex:1,
-    margin:5
-  },
-
-
-  boton:{
-    borderRadius: 20
-    
+    margin:5,
+    alignItems:'center'
   }
 
 })
