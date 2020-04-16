@@ -16,8 +16,12 @@ class Welcome extends Component{
           <View style = {Styles.header}>
             <Text style= {Styles.paragraph}> 
               BIENVENIDO
-              <Icon name='home' />
             </Text>
+          </View>
+
+          <View>
+            <Icon name='home'>
+            </Icon>
           </View>
 
 
@@ -46,6 +50,7 @@ const Styles = StyleSheet.create({
 
   header: {
     flex: 2,
+    paddingVertical:'20%',
     alignItems : 'center',
     justifyContent: 'center'
   },

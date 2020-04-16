@@ -48,6 +48,7 @@ const Styles=StyleSheet.create({
     
     
       header: {
+        padding:'30%',  
         flex: 1,
         //flexDirection:'column',
         alignItems : 'flex-start',

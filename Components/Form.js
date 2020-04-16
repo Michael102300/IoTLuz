@@ -76,6 +76,8 @@ const Styles = StyleSheet.create({
 
   header: {
     flex: 2,
+
+    paddingVertical:'5%',
     flexDirection:'row',
     alignItems : 'flex-start',
     justifyContent: 'space-between'
