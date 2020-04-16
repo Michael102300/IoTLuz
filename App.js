@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, Button, Alert} from 'react-native'
 import {  createAppContainer} from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Icon } from 'react-native-elements'
+import { Ionicons } from '@expo/vector-icons';
 //import {createStackNavigator} from 'react-navigation-stack'
 
 //Screens
@@ -33,14 +34,14 @@ const App = createBottomTabNavigator(
         let iconName;
         if (routeName === 'Welcome') {
           //iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-          iconName = focused ? 'ios-home' : '-outline';
+          iconName = `ios-information-circle${focused ? '' : '-outline'}`;
         } else if (routeName === 'Add') {
-          iconName = `user${focused ? '' : '-outline'}`;
+          iconName = `ios-options${focused ? '' : '-outline'}`;
         }
 
         // You can return any component that you like here! We usually use an
         // icon component from react-native-vector-icons
-        return <Icon name='home'  />; //size={25} color={tintColor}
+         return <Ionicons name={iconName} size={25} color={tintColor} />;; //size={25} color={tintColor}
       },
     }),
     tabBarOptions: {

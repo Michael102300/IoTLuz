@@ -17,12 +17,10 @@ class Welcome extends Component{
             <Text style= {Styles.paragraph}> 
               BIENVENIDO
             </Text>
+            <Icon name='home'></Icon>
           </View>
 
-          <View>
-            <Icon name='home'>
-            </Icon>
-          </View>
+
 
 
           <View style = {Styles.finish}>

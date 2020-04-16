@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {View, Text, StyleSheet, Button, Alert, TextInput} from 'react-native'
 
+
 class Form extends Component{
   
   _onPressButton() {Alert.alert('Sirve el boton')}
@@ -76,8 +77,7 @@ const Styles = StyleSheet.create({
 
   header: {
     flex: 2,
-
-    paddingVertical:'5%',
+    paddingVertical:'15%',
     flexDirection:'row',
     alignItems : 'flex-start',
     justifyContent: 'space-between'
@@ -120,6 +120,7 @@ const Styles = StyleSheet.create({
 
 
   footer:{
+    padding:'3%',
     flex: 1,
     justifyContent: 'space-between',
     flexDirection : 'row',
@@ -141,6 +142,7 @@ const Styles = StyleSheet.create({
 
   boton:{
     borderRadius: 20
+    
   }
 
 })

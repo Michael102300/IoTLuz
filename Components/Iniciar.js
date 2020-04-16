@@ -65,7 +65,7 @@ class Add extends Component{
           </SafeAreaView>
 
 
-          <View style = {Styles.foot}>    
+          <View style = {Styles.footer}>    
 
             <TouchableOpacity onPress={this.agregar}>
               <View style={Styles.button}>
@@ -138,8 +138,9 @@ const Styles = StyleSheet.create({
    },
 
 
-  foot:{
+  footer:{
     flex: 0.3,
+    paddingVertical:'3%',
     margin: 1,
     justifyContent: 'space-around',
     flexDirection : 'row',
