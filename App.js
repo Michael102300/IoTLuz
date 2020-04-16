@@ -34,7 +34,7 @@ export default createAppContainer(createBottomTabNavigator(
           iconName =  focused ? 'home' : 'home';
         } else if (routeName === 'Form') {
           iconName = focused ? 'library-add' : 'library-add';
-        } else if (routeName === 'Add'){
+        } else if (routeName === 'Lista'){
           iconName = focused ? 'list' : 'list';
         }
 

@@ -181,4 +181,4 @@ const Styles = StyleSheet.create({
 
   
 })
-export default Add
+export default Lista
