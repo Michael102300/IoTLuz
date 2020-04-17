@@ -5,7 +5,8 @@ import {View,
   StyleSheet, 
   TouchableOpacity,
   FlatList,
-  Slider
+  Slider,
+  Button
 } from 'react-native'
 
 import style from './Styles'
@@ -41,6 +42,9 @@ function Item({ title }) {
         //onValueChange={this.change.bind(this)}
         value={30}
       />
+      <Button style={{height:0.1, marginTop:2,padding:'2%'}} title={"Off"}  />
+        
+      
     </View>
   );
 }
