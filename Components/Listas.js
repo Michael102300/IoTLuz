@@ -64,8 +64,8 @@ class Lista extends Component{
 const Styles = StyleSheet.create({
 
   containerr: {
-    flex: 0.4,
-    margin:'5%',
+    flex: 5,
+    marginHorizontal:'5%',
     marginTop: Constants.statusBarHeight,
   },
 
@@ -77,7 +77,7 @@ const Styles = StyleSheet.create({
 
 
   header: {
-    flex: 0.3,
+    flex: 1.2,
     alignItems : 'center',
     justifyContent: 'flex-end'
   },
