@@ -54,8 +54,9 @@ const Styles = StyleSheet.create({
     item: {
       backgroundColor: 'rgba(5,5,15,0.1)',
       borderColor:'black',
+      flexDirection:'row',
       borderWidth:1,
-      padding: 5,
+      padding: 15,
       marginVertical: 8,
       marginHorizontal: 5,
     },

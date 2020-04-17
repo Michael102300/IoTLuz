@@ -35,7 +35,7 @@ function Item({ title }) {
   return (
     <View style={style.item}>
       <Text style={style.title}>{title}</Text> 
-      <Slider
+      <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
         step={1}
         maximumValue={100}
         //onValueChange={this.change.bind(this)}
