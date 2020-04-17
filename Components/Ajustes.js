@@ -1,63 +1,47 @@
-import React, {Component} from 'react'
-import {View, Text, StyleSheet, TouchableOpacity, Button} from 'react-native'
+import React from 'react';
+import {StyleSheet, Text, View, Slider} from 'react-native';
 
-class Ajustes extends Component{
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 50,
+    };
+  }
 
+  change(value) {
+    this.setState(() => {
+      return {
+        value: parseFloat(value),
+      };
+    });
+  }
 
-    form = () =>{
-        this.props.navigation.navigate('Form')
-    }
-    
-
-
-
-    render(){
-        //const { navigation } = this.props;
-        //const { navigate } = this.props.navigation;
-        return(
-
-            <View style={Styles.container}>
-                <View style={Styles.header}>
-                    <Button title="Volver al Form" onPress={this.form}>
-                    </Button>
-                
-
-                
-                    <Text >
-                        NumeroLista: {JSON.stringify(this.props.navigation.getParam('NumeroLista','NO-ID'))}
-                    </Text>
-                    <Text>
-                        UsuarioLista: {(this.props.navigation.getParam('UsuarioLista','default value'))}
-                    </Text>
-                </View>
-            </View>
-            
-        )
-    }
-
+  render() {
+    const {value} = this.state;
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>{String(value)}</Text>
+        <Slider
+          step={1}
+          maximumValue={100}
+          onValueChange={this.change.bind(this)}
+          value={value}
+        />
+      </View>
+    );
+  }
 }
 
-
-const Styles=StyleSheet.create({
-
-    container :{
-        flex : 1,
-        backgroundColor : '#E4F2F8',
-        //padding: 10,
-        flexDirection:'column',
-        justifyContent:'space-between'
-      },
-    
-    
-      header: {
-        paddingVertical:'15%',  
-        flex: 0.9,
-        //flexDirection:'column',
-        alignItems : 'flex-start',
-        //justifyContent: 'space-between'
-    
-      },
-
-
-})
-export default Ajustes
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    paddingHorizontal:'10%'
+  },
+  text: {
+    fontSize: 50,
+    textAlign: 'center',
+  },
+});
