@@ -52,13 +52,16 @@ const Styles = StyleSheet.create({
       //fontSize: 'medium'
     },
     item: {
-      backgroundColor: '#f9c2ff',
+      backgroundColor: 'rgba(5,5,15,0.1)',
+      borderColor:'black',
+      borderWidth:1,
       padding: 5,
       marginVertical: 8,
       marginHorizontal: 5,
     },
     title: {
-      fontSize: 25,
+      fontSize: 15,
+
     }
   })
   export default Styles 

@@ -4,19 +4,50 @@ import {View,
   Text, 
   StyleSheet, 
   TouchableOpacity,
-  FlatList
+  FlatList,
+  Slider
 } from 'react-native'
+
 import style from './Styles'
 import DATA from './data/data.json'
 
+/*
+constructor(props) {
+  super(props);
+  this.state = {
+    value: 50,
+  };
+}
+
+change(value) {
+  this.setState(() => {
+    return {
+      value: parseFloat(value),
+    };
+  });
+}
+*/
+
+//const {value} = this.state;
+
 function Item({ title }) {
+
   return (
     <View style={style.item}>
-      <Text style={style.title}>{title}</Text>
-      
+      <Text style={style.title}>{title}</Text> 
+      <Slider
+        step={1}
+        maximumValue={100}
+        //onValueChange={this.change.bind(this)}
+        value={30}
+      />
     </View>
   );
 }
+
+
+//global: value
+
 
 class Habitaciones extends Component{
   agregar = () =>{
@@ -27,7 +58,13 @@ class Habitaciones extends Component{
     this.props.navigation.navigate('Welcome')
   }
 
+
+
+
+
     render(){
+      
+
       return(
         <View style={Styles.container}>
 
@@ -39,11 +76,13 @@ class Habitaciones extends Component{
             </Text>
           </View>
           <View style={Styles.containerr}>
+
             <FlatList
               data={DATA}
               renderItem={({ item }) => <Item title={item.title} />}
               keyExtractor={item => item.id}
             />
+
           </View>
           <View style = {Styles.footer}>    
             
