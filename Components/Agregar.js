@@ -7,12 +7,13 @@ import {View,
   TextInput,
   TouchableOpacity
 } from 'react-native'
+
 import data from './data/data.json'
 import styles from './Styles'
 
 var id=0
 
-class Form extends Component{
+class Agregar extends Component{
   constructor(props){
     super(props)
 
@@ -27,7 +28,7 @@ class Form extends Component{
     data.push({
       "title" : this.state.nombre
     })
-    this.props.navigation.navigate('Lista'),
+    this.props.navigation.navigate('Habitacione'),
     this.setState({
       nombre: ''
     })
@@ -183,4 +184,4 @@ const Styles = StyleSheet.create({
   }
 
 })
-export default Form
+export default Agregar

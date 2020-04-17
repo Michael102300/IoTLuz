@@ -26,7 +26,7 @@ class Registrarse extends Component{
       }
 
     home = () => {
-        this.props.navigation.navigate('Welcome', {UserName: JSON.stringify({UserName}), Password:'prro',})
+        this.props.navigation.navigate('Inicio', {UserName: JSON.stringify({UserName}), Password:'prro',})
     }
 
         render(){
@@ -65,16 +65,16 @@ class Registrarse extends Component{
                                     onChangeText={(Password) => this.setState({Password})}
                                 />
                             </View>
-
-
-                        </View>
-
-
-                        <View style={{alignItems:'center',paddingVertical:'2%'}}>
-                            <Text>
+                            <View style={{alignItems:'center',paddingVertical:'3%', flex:1}}>
+                              <Text>
                                 Bienvenido {UserName}
-                            </Text>
+                              </Text>
+                            </View>
+
                         </View>
+
+
+
 
 
                         <View style={Styles.buttonS} >

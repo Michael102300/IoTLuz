@@ -14,7 +14,7 @@ import {View,
 
 
 
-class Welcome extends Component{
+class Inicio extends Component{
 
   constructor(props){
     super(props)
@@ -45,7 +45,7 @@ class Welcome extends Component{
 
           <View style = {Styles.header}>
             <Text style= {Styles.paragraph}> 
-              Bienvenido a SmartHouse App {(this.props.navigation.getParam('UserName','default value'))}
+              Bienvenido a SmartHouse App 
             </Text>
           </View>
 
@@ -95,8 +95,8 @@ const Styles = StyleSheet.create({
   },
 
   header: {
-    flex: 1.2,
-    paddingVertical:'10%',
+    flex: 1,
+    paddingVertical:'7%',
     alignItems : 'center',
     justifyContent: 'space-between',
     flexDirection:'column',
@@ -171,11 +171,11 @@ const Styles = StyleSheet.create({
 
 const  UserStack = createAppContainer(createStackNavigator(
   {
-  Welcome:Welcome,
+  Inicio:Inicio,
   Registrarse:Registrarse,
   },
   {
-    initialRouteName: 'Welcome',
+    initialRouteName: 'Inicio',
   }
 
 ))

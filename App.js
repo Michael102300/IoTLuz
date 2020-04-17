@@ -8,10 +8,10 @@ import { Ionicons } from '@expo/vector-icons';
 //import {createStackNavigator} from 'react-navigation-stack'
 
 //Screens
-import Form from './Components/Form'
-import Welcome from './Components/Welcome'
-import Lista from './Components/Listas'
-import Datos from './Components/Datos'
+import Agregar from './Components/Agregar'
+import Inicio from './Components/Inicio'
+import Habitaciones from './Components/Habitaciones'
+import Ajustes from './Components/Ajustes'
 
 
 
@@ -19,10 +19,10 @@ import Datos from './Components/Datos'
 export default createAppContainer(createBottomTabNavigator(
 
   {
-    Welcome:Welcome,
-    Lista:Lista,
-    Form:Form,
-    Datos:Datos
+    Inicio:Inicio,
+    Habitaciones:Habitaciones,
+    Agregar:Agregar,
+    Ajustes:Ajustes
   },
 
   {
@@ -30,12 +30,14 @@ export default createAppContainer(createBottomTabNavigator(
       tabBarIcon: ({ focused, tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === 'Welcome') {
+        if (routeName === 'Inicio') {
           iconName =  focused ? 'home' : 'home';
-        } else if (routeName === 'Form') {
+        } else if (routeName === 'Agregar') {
           iconName = focused ? 'library-add' : 'library-add';
-        } else if (routeName === 'Lista'){
+        } else if (routeName === 'Habitaciones'){
           iconName = focused ? 'list' : 'list';
+        } else if (routeName === 'Ajustes'){
+          iconName = focused ? 'settings' : 'settings';
         }
 
         // You can return any component that you like here! We usually use an

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {View, Text, StyleSheet, TouchableOpacity, Button} from 'react-native'
 
-class Datos extends Component{
+class Ajustes extends Component{
 
 
     form = () =>{
@@ -60,4 +60,4 @@ const Styles=StyleSheet.create({
 
 
 })
-export default Datos
+export default Ajustes

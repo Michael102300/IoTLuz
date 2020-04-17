@@ -18,7 +18,7 @@ function Item({ title }) {
   );
 }
 
-class Lista extends Component{
+class Habitaciones extends Component{
   agregar = () =>{
     this.props.navigation.navigate('Form')
   }
@@ -101,4 +101,4 @@ const Styles = StyleSheet.create({
   },
   
 })
-export default Lista
+export default Habitaciones
