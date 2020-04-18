@@ -61,7 +61,7 @@ const Styles = StyleSheet.create({
       marginHorizontal: 5,
     },
     title: {
-      fontSize: 15,
+      fontSize: 12,
 
     }
   })

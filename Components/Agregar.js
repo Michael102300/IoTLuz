@@ -26,9 +26,10 @@ class Agregar extends Component{
   agregar=()=>{
     id = id +1
     data.push({
-      "title" : this.state.nombre
+      "title" : this.state.nombre,
+      "id": id
     })
-    this.props.navigation.navigate('Habitacione'),
+    this.props.navigation.navigate('Habitaciones'),
     this.setState({
       nombre: ''
     })

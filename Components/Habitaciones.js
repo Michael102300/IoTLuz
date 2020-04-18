@@ -11,49 +11,53 @@ import {View,
 
 import style from './Styles'
 import DATA from './data/data.json'
+import { ListItem } from 'react-native-elements';
 
-/*
-constructor(props) {
-  super(props);
-  this.state = {
-    value: 50,
-  };
-}
 
-change(value) {
-  this.setState(() => {
-    return {
-      value: parseFloat(value),
-    };
-  });
-}
-*/
 
-//const {value} = this.state;
+/* 
 
 function Item({ title }) {
-
   return (
     <View style={style.item}>
       <Text style={style.title}>{title}</Text> 
       <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
         step={1}
         maximumValue={100}
-        //onValueChange={this.change.bind(this)}
-        value={30}
+        onValueChange={this.change.bind(this)}
+        value={60}
       />
       <Button style={{height:0.1, marginTop:2,padding:'2%'}} title={"Off"}  />
-        
+
+    <View>
+      <Text>
+       P: {value}
+      </Text>
+    </View>        
       
     </View>
-  );
+
+  );    
 }
-
-
-//global: value
-
+ */
 
 class Habitaciones extends Component{
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 50,
+    };
+  }
+
+  change(value) {
+    this.setState(() => {
+      return {
+        value: parseFloat(value),
+      };
+    });
+  }
+
   agregar = () =>{
     this.props.navigation.navigate('Form')
   }
@@ -63,44 +67,55 @@ class Habitaciones extends Component{
   }
 
 
-
-
-
     render(){
+
+      const {value} = this.state;
       
+        return(
+          <View style={Styles.container}>
 
-      return(
-        <View style={Styles.container}>
+
+              <View style = {Styles.header}>
+                <Text style= {Styles.paragraph}> 
+                  Ajusta el nivel de luz de las habitaciones.
+                </Text>
+              </View>
+
+              <View style={Styles.containerr}>
+
+                <FlatList
+                  data={DATA}
+                  //renderItem={({ item }) => <Item title={item.title} />}
+                  renderItem={({ item }) => (
+                        <View style={style.item}>
+
+                          <Text style={style.title}>{item.title}</Text> 
+                          <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
+                            step={1}
+                            maximumValue={100}
+                            onValueChange={this.change.bind(this)}
+                            value={value}
+                          />
+                          <Button style={{height:0.1, marginTop:2,padding:'2%'}} title={"Off"}  />
+                          <View>
+                            <Text>
+                             {value}
+                            </Text>
+                          </View>        
+                        </View>
+
+                      )}
+                  keyExtractor={item => item.id}
+                />
+
+              </View>
 
 
-          <View style = {Styles.header}>
-            <Text style= {Styles.paragraph}> 
-              Añade los cuartos que posees y los cuales quieres controlar. 
-              Datos:
-            </Text>
           </View>
-          <View style={Styles.containerr}>
-
-            <FlatList
-              data={DATA}
-              renderItem={({ item }) => <Item title={item.title} />}
-              keyExtractor={item => item.id}
-            />
-
-          </View>
-          <View style = {Styles.footer}>    
-            
-    
-          </View>
-          
 
 
 
-        </View>
-
-
-
-      )
+        )
 
     }
 }
@@ -114,22 +129,29 @@ const Styles = StyleSheet.create({
 
 
   container :{
-    flex : 1,
+    flex : 1.1,
     backgroundColor : 'white'
   },
 
 
   header: {
-    flex: 1.2,
+    flex: 1.1,
     alignItems : 'center',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    //backgroundColor: 'rgba(5,5,15,0.1)',
+    //borderColor:'black',
+    //borderWidth:1,
+    marginHorizontal:'7%',
+    //marginVertical:'1%'
   },
 
 
   paragraph :{
-    fontSize : 18,
-    color : 'black',
+    fontSize : 19,
+    color : 'rgba(90,40,130,0.9))',
     textAlign : 'center',
+    textDecorationColor:'rgba(2,20,202,1)',
+    textDecorationStyle:'solid'
    },
 
 
