@@ -79,10 +79,11 @@ class Habitaciones extends Component{
 
 
               <View style = {Styles.header}>
-                <Text style= {Styles.paragraph}  /* {JSON.stringify(navigation.getParam('id', 0))} */ > 
+                <Text style= {Styles.paragraph}   > 
                   Ajusta el nivel de luz de las habitaciones.
-                  {params.id} 
-                  
+                </Text>
+                <Text style= {Styles.paragraph}   > 
+                  Numero de habitaciones: {params.id} 
                 </Text>
               </View>
 
