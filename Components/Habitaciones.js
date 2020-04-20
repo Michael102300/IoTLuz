@@ -66,7 +66,7 @@ class Habitaciones extends Component{
 
 
     render(){
-      
+      const {navigation}= this.props;
       const {value} = this.state;
       const { params } = this.props.navigation.state
       const {SliderInfo} = this.state;
@@ -83,7 +83,7 @@ class Habitaciones extends Component{
                   Ajusta el nivel de luz de las habitaciones.
                 </Text>
                 <Text style= {Styles.paragraph}   > 
-                  Numero de habitaciones: {params.id} 
+                  Numero de habitaciones: {navigation.getParam('id',0)} 
                 </Text>
               </View>
 
@@ -138,7 +138,7 @@ class Habitaciones extends Component{
 const Styles = StyleSheet.create({
 
   containerr: {
-    flex: 5,
+    flex: 4,
     marginHorizontal:'5%',
     marginTop: Constants.statusBarHeight,
   },
