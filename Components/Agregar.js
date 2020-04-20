@@ -20,16 +20,17 @@ class Agregar extends Component{
     this.state={
       nombre:''
     }
+
   }
   _onPressButton() {Alert.alert('Sirve el boton')}
 
   agregar=()=>{
-    id = id +1
+    id = id+1
     data.push({
       "title" : this.state.nombre,
-      "id": id
+      "id": this.state.id
     })
-    this.props.navigation.navigate('Habitaciones'),
+    this.props.navigation.navigate('Habitaciones', {id: id }), //this.state.id
     this.setState({
       nombre: ''
     })

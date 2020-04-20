@@ -6,13 +6,13 @@ import {View,
   TouchableOpacity,
   FlatList,
   Slider,
-  Button
+  Button,
+  Alert
 } from 'react-native'
 
 import style from './Styles'
 import DATA from './data/data.json'
 import { ListItem } from 'react-native-elements';
-
 
 
 /* 
@@ -41,21 +41,19 @@ function Item({ title }) {
 }
  */
 
+
+
+
 class Habitaciones extends Component{
 
   constructor(props) {
     super(props);
     this.state = {
       value: 50,
+      vectid:0,
+      SliderInfo: ''
+      
     };
-  }
-
-  change(value) {
-    this.setState(() => {
-      return {
-        value: parseFloat(value),
-      };
-    });
   }
 
   agregar = () =>{
@@ -68,16 +66,23 @@ class Habitaciones extends Component{
 
 
     render(){
-
+      
       const {value} = this.state;
+      const { params } = this.props.navigation.state
+      const {SliderInfo} = this.state;
+
+
       
         return(
+          
           <View style={Styles.container}>
 
 
               <View style = {Styles.header}>
-                <Text style= {Styles.paragraph}> 
+                <Text style= {Styles.paragraph}  /* {JSON.stringify(navigation.getParam('id', 0))} */ > 
                   Ajusta el nivel de luz de las habitaciones.
+                  {params.id} 
+                  
                 </Text>
               </View>
 
@@ -93,23 +98,33 @@ class Habitaciones extends Component{
                           <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
                             step={1}
                             maximumValue={100}
-                            onValueChange={this.change.bind(this)}
-                            value={value}
+                            onValueChange={ value => {this.setState({value: value}), 
+                                            this.setState({SliderInfo: item.title.toString() + ":" + value})} } // Se añade el cuarto y el valor del slider a la variavle SliderInfo                             value => {this.Sliderval(value,parseInt(params.id))}
+                            
+                            value={65}
                           />
-                          <Button style={{height:0.1, marginTop:2,padding:'2%'}} title={"Off"}  />
-                          <View>
-                            <Text>
-                             {value}
-                            </Text>
-                          </View>        
+
+                          <Button style={{height:0.1, marginTop:2,padding:'2%'}} 
+                            title={"Off"} 
+                            //onPress={}
+                          />
+
+       
                         </View>
 
                       )}
                   keyExtractor={item => item.id}
                 />
 
+
+
               </View>
 
+              <View /* Se imprime el valor de la informacion del slider ej: sala:15*/>
+                <Text >
+                  {SliderInfo}
+                </Text>
+              </View> 
 
           </View>
 

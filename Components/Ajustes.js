@@ -1,5 +1,9 @@
-import React from 'react';
-import {StyleSheet, Text, View, Slider} from 'react-native';
+import React, {Component} from 'react'
+import {StyleSheet, Text, View, Slider,Button,TextInput,Alert, FlatList} from 'react-native';
+//import DATA from './data/data.json'
+//import style from './Styles'
+
+
 
 export default class App extends React.Component {
   constructor(props) {
@@ -45,3 +49,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+ 
