@@ -8,7 +8,7 @@ import {View,
    Button
 } from 'react-native'
 
-
+//var StateMessage = ''
 
 class Registrarse extends Component{
 
@@ -21,7 +21,9 @@ class Registrarse extends Component{
           UserName:'',
           Password:'',
           Mail:'',
-          bienvenido:'¡Bienvenido!'
+          bienvenido:'¡Bienvenido!',
+          StateMessage : ''
+          
         }
       }
 
@@ -29,9 +31,24 @@ class Registrarse extends Component{
         this.props.navigation.navigate('Inicio', {UserName: JSON.stringify({UserName}), Password:'prro',})
     }
 
+    save = () =>{
+
+    if ((this.state.UserName !== "") && (this.state.Password !== "") && (this.state.Mail !== "")){
+
+        this.setState({StateMessage: 'Bienvenido ' + this.state.UserName + '.'})
+
+      }else{
+
+        this.setState({StateMessage: 'Ingrese los datos en todos los campos requeridos.'})
+
+      }
+    }
+
         render(){
             let {UserName}=this.state
             let {Password}=this.state
+            let {Mail}=this.state
+            let {StateMessage} = this.state
 
                 return(
                     
@@ -44,7 +61,7 @@ class Registrarse extends Component{
                                 <TextInput 
                                     style={Styles.textin} placeholder={" Nombre de usuario"} 
                                     onChangeText={(UserName) =>  this.setState({UserName})}
-                                    maxLength={18} 
+                                    maxLength={28} 
                                 />
                             </View>
 
@@ -52,8 +69,10 @@ class Registrarse extends Component{
                                 <Icon name='security'  />
                                 <TextInput 
                                     style={Styles.textin} 
-                                    placeholder={"      Contraseña       "}
+                                    placeholder={"  Contraseña  "}
                                     onChangeText={(Password) => this.setState({Password})}
+                                    secureTextEntry={true}
+                                    maxLength={28}
                                 />
                             </View>
 
@@ -62,23 +81,24 @@ class Registrarse extends Component{
                                 <TextInput 
                                     style={Styles.textin} 
                                     placeholder={" Correo electónico "}
-                                    onChangeText={(Password) => this.setState({Password})}
+                                    onChangeText={(Mail) => this.setState({Mail})}
                                 />
                             </View>
+
                             <View style={{alignItems:'center',paddingVertical:'3%', flex:1}}>
-                              <Text>
-                                Bienvenido {UserName}
+                              <Text style={{fontSize: 10}}  >
+                                {StateMessage}
                               </Text>
                             </View>
 
                         </View>
 
 
-
-
-
                         <View style={Styles.buttonS} >
-                            <Button title={"Guardar y registrar"}  />
+                            <Button 
+                              title={"Guardar y registrar"}  
+                              onPress={() => this.save()}
+                            />
                         </View>
 
 
@@ -99,15 +119,6 @@ const Styles = StyleSheet.create({
       flex : 1,
       backgroundColor : '#E4F2F8',
       paddingVertical:'10%',
-    },
-  
-    header: {
-      flex: 1.2,
-      paddingVertical:'10%',
-      alignItems : 'center',
-      justifyContent: 'space-between',
-      flexDirection:'column',
-      
     },
   
     paragraph :{
@@ -156,7 +167,7 @@ const Styles = StyleSheet.create({
     },
   
     login:{
-      marginVertical:'20%',
+      marginVertical:'12%',
       marginHorizontal:'5%',
       flex:1.1,
       alignItems:'center',

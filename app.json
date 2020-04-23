@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "IotLuz",
-    "icon": "./media/Fondo.png",
+    "icon": "",
     "version": "1.0.0",
     "slug": "iotluz",
     "ios": {
