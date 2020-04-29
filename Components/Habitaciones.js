@@ -7,7 +7,8 @@ import {View,
   FlatList,
   Slider,
   Button,
-  Alert
+  Alert,
+  TouchableHighlight
 } from 'react-native'
 
 import style from './Styles'
@@ -64,6 +65,10 @@ class Habitaciones extends Component{
     this.props.navigation.navigate('Welcome')
   }
 
+  editar = () =>{
+    Alert.alert('Editar')
+  }
+
 
     render(){
       const {navigation}= this.props;
@@ -79,13 +84,34 @@ class Habitaciones extends Component{
 
 
               <View style = {Styles.header}>
-                <Text style= {Styles.paragraph}   > 
-                  Ajusta el nivel de luz de las habitaciones.
-                </Text>
-                <Text style= {Styles.paragraph}   > 
-                  Numero de habitaciones: {navigation.getParam('id',0)} 
-                </Text>
+
+
+                <View>
+                  <Text style= {Styles.paragraph}   > 
+                    Numero de habitaciones: {navigation.getParam('id',0)} 
+                  </Text>
+                </View>
+
+                <View>
+                  <TouchableHighlight  style={{
+                      borderWidth:1,
+                      borderColor:'rgba(0,0,0,0.2)',
+                      alignItems:'center',
+                      justifyContent:'center',
+                      width:100,
+                      height:100,
+                      backgroundColor:'#fff',
+                      borderRadius:50,
+                    }}
+                    onPress={this.agregar()}
+                  >
+                    <Icon name={"chevron-right"}  size={30} color="#01a699" />
+                  </TouchableHighlight>
+                </View>
+
+
               </View>
+              
 
               <View style={Styles.containerr}>
 
@@ -95,22 +121,20 @@ class Habitaciones extends Component{
                   renderItem={({ item }) => (
                         <View style={style.item}>
 
-                          <Text style={style.title}>{item.title}</Text> 
-                          <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
-                            step={1}
-                            maximumValue={100}
-                            onValueChange={ value => {this.setState({value: value}), 
-                                            this.setState({SliderInfo: item.title.toString() + ":" + value})} } // Se añade el cuarto y el valor del slider a la variavle SliderInfo                             value => {this.Sliderval(value,parseInt(params.id))}
+                          <TouchableHighlight onLongPress={this.editar()} >
+                            <Text style={style.title}>{item.title}</Text> 
+                            <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
+                              step={1}
+                              maximumValue={100}
+                              onValueChange={ value => {this.setState({value: value}), 
+                                              this.setState({SliderInfo: item.title.toString() + ":" + value})} } // Se añade el cuarto y el valor del slider a la variavle SliderInfo                             value => {this.Sliderval(value,parseInt(params.id))}
+                              
+                              value={65}
+                            />
+
                             
-                            value={65}
-                          />
+                          </TouchableHighlight>
 
-                          <Button style={{height:0.1, marginTop:2,padding:'2%'}} 
-                            title={"Off"} 
-                            //onPress={}
-                          />
-
-       
                         </View>
 
                       )}
@@ -154,6 +178,7 @@ const Styles = StyleSheet.create({
     flex: 1.1,
     alignItems : 'center',
     justifyContent: 'flex-end',
+    flexDirection:'row',
     //backgroundColor: 'rgba(5,5,15,0.1)',
     //borderColor:'black',
     //borderWidth:1,

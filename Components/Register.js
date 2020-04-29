@@ -37,11 +37,19 @@ class Registrarse extends Component{
 
         this.setState({StateMessage: 'Bienvenido ' + this.state.UserName + '.'})
 
-      }else{
+      }
 
-        this.setState({StateMessage: 'Ingrese los datos en todos los campos requeridos.'})
+      if (this.state.UserName === ""){ //Ingrese los datos en todos los campos requeridos.
+
+        this.setState({StateMessage: 'Ingrese un nombre de usuario'})
 
       }
+
+      //for (int i=0 ; i< Password.maxLength() ; i++){
+
+      //}
+
+
     }
 
         render(){
