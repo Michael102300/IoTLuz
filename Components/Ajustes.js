@@ -50,10 +50,8 @@ import { Icon } from 'react-native-elements'
           <View style={Styles.header}>
 
             <View style={Styles.headerLeft} >
-              <Image 
-                style={Styles.image} 
-                source={im} >
-              </Image>
+              
+              
             </View>
 
             <View style={Styles.headerRight} >
