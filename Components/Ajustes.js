@@ -30,11 +30,11 @@ import { Icon } from 'react-native-elements'
 
 
   login = () =>{
-
+    Alert.alert('Nombre: ' + this.state.Nombre + 'Contraseña: ' + this.state.Contraseña)
   }
 
   longp = () =>{
-
+    Alert.alert('Longpress')
   }
   
 
@@ -50,8 +50,10 @@ import { Icon } from 'react-native-elements'
           <View style={Styles.header}>
 
             <View style={Styles.headerLeft} >
-              
-              
+              <Image
+                style={Styles.image}
+                source={im}
+                />
             </View>
 
             <View style={Styles.headerRight} >
@@ -69,7 +71,7 @@ import { Icon } from 'react-native-elements'
 
             <View style={Styles.bodyUp} >
               <Icon
-                style={Styles.icon} 
+                //style={Styles.icon} 
                 name='Security' />
               <TextInput 
                 style={Styles.TextInputUp}
@@ -81,7 +83,7 @@ import { Icon } from 'react-native-elements'
 
             <View style={Styles.bodyDown} >
               <Icon
-                style={Styles.icon} 
+                //style={Styles.icon} 
                 name='Person'/>
               <TextInput 
                 style={Styles.TextInputDown}
@@ -153,11 +155,11 @@ const Styles = StyleSheet.create({
   },
 
   image:{
-    width:10,
-    height:10,
-    borderColor:'purple',
+    width:35,
+    height:35,
+    /* borderColor:'purple',
     borderWidth:2,
-    borderRadius:10,
+    borderRadius:10, */
   },
 
   headerRight:{
