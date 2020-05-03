@@ -8,39 +8,16 @@ import {View,
   Slider,
   Button,
   Alert,
-  TouchableHighlight
+  TouchableHighlight,
+  Image
 } from 'react-native'
+import { Icon } from 'react-native-elements'
 
 import style from './Styles'
 import DATA from './data/data.json'
+import im from '../media/Batman1.jpg'
 import { ListItem } from 'react-native-elements';
 
-
-/* 
-
-function Item({ title }) {
-  return (
-    <View style={style.item}>
-      <Text style={style.title}>{title}</Text> 
-      <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
-        step={1}
-        maximumValue={100}
-        onValueChange={this.change.bind(this)}
-        value={60}
-      />
-      <Button style={{height:0.1, marginTop:2,padding:'2%'}} title={"Off"}  />
-
-    <View>
-      <Text>
-       P: {value}
-      </Text>
-    </View>        
-      
-    </View>
-
-  );    
-}
- */
 
 
 
@@ -58,7 +35,8 @@ class Habitaciones extends Component{
   }
 
   agregar = () =>{
-    this.props.navigation.navigate('Form')
+    this.props.navigation.navigate('Agregar')
+    //Alert.alert('Agregar')
   }
 
   cancelar = () =>{
@@ -67,6 +45,10 @@ class Habitaciones extends Component{
 
   editar = () =>{
     Alert.alert('Editar')
+  }
+
+  OnOff = () =>{
+    Alert.alert('OnOFF')
   }
 
 
@@ -86,32 +68,38 @@ class Habitaciones extends Component{
               <View style = {Styles.header}>
 
 
-                <View>
+                <View style={{paddingLeft:'3%', 
+                              paddingRight:'10%',
+                              backgroundColor: 'rgba(5,5,15,0.1)',
+                              borderColor:'black',
+                              borderWidth:0.5,}} >
                   <Text style= {Styles.paragraph}   > 
-                    Numero de habitaciones: {navigation.getParam('id',0)} 
+                    Habitaciones: {navigation.getParam('id',0)} 
                   </Text>
                 </View>
 
-                <View>
-                  <TouchableHighlight  style={{
+                <View style={{paddingHorizontal:'3%',paddingStart:'9%'}}>
+                  <TouchableOpacity  style={{
                       borderWidth:1,
-                      borderColor:'rgba(0,0,0,0.2)',
+                      borderColor:'black', //rgba(0,0,0,0.2)
                       alignItems:'center',
                       justifyContent:'center',
-                      width:100,
-                      height:100,
+                      width:55,
+                      height:55,
                       backgroundColor:'#fff',
                       borderRadius:50,
+                      backgroundColor: 'rgba(5,5,15,0.1)',
+                      
                     }}
-                    onPress={this.agregar()}
+                    onPress={()=>this.agregar()}
                   >
-                    <Icon name={"chevron-right"}  size={30} color="#01a699" />
-                  </TouchableHighlight>
+                    <Icon name={"add"}  size={30} color="#01a699" />
+                  </TouchableOpacity>
                 </View>
 
 
               </View>
-              
+
 
               <View style={Styles.containerr}>
 
@@ -119,21 +107,23 @@ class Habitaciones extends Component{
                   data={DATA}
                   //renderItem={({ item }) => <Item title={item.title} />}
                   renderItem={({ item }) => (
-                        <View style={style.item}>
 
-                          <TouchableHighlight onLongPress={this.editar()} >
-                            <Text style={style.title}>{item.title}</Text> 
+                        <View style={style.item}>
+                          
+                            <View style={{flexDirection:'column',justifyContent:'space-between'}}>
+                              <Text style={style.title}>{item.title}</Text> 
+                              <TouchableHighlight  onLongPress={()=>this.editar()}  onPress={()=>this.OnOff()} >
+                                <Image style={Styles.image} source={im}  />
+                              </TouchableHighlight>
+                            </View>
+                             
                             <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
                               step={1}
                               maximumValue={100}
                               onValueChange={ value => {this.setState({value: value}), 
                                               this.setState({SliderInfo: item.title.toString() + ":" + value})} } // Se añade el cuarto y el valor del slider a la variavle SliderInfo                             value => {this.Sliderval(value,parseInt(params.id))}
-                              
                               value={65}
                             />
-
-                            
-                          </TouchableHighlight>
 
                         </View>
 
@@ -162,9 +152,16 @@ class Habitaciones extends Component{
 const Styles = StyleSheet.create({
 
   containerr: {
-    flex: 4,
-    marginHorizontal:'5%',
-    marginTop: Constants.statusBarHeight,
+    flex: 4.7,
+    marginHorizontal:'4%',
+    marginVertical:'1%'
+    //marginTop: Constants.statusBarHeight,
+  },
+
+  image:{
+    width:35,
+    height:35,
+    borderRadius:3,
   },
 
 
@@ -175,15 +172,15 @@ const Styles = StyleSheet.create({
 
 
   header: {
-    flex: 1.1,
+    flex: 1.5,
     alignItems : 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     flexDirection:'row',
     //backgroundColor: 'rgba(5,5,15,0.1)',
     //borderColor:'black',
     //borderWidth:1,
-    marginHorizontal:'7%',
-    //marginVertical:'1%'
+    marginHorizontal:'3%',
+    //paddingTop:'6%'
   },
 
 
@@ -198,7 +195,7 @@ const Styles = StyleSheet.create({
 
   footer:{
     flex: 0.3,
-    paddingVertical:'3%',
+    paddingVertical:'2%',
     margin: 1,
     justifyContent: 'space-around',
     flexDirection : 'row',
@@ -208,3 +205,33 @@ const Styles = StyleSheet.create({
   
 })
 export default Habitaciones
+
+
+
+
+
+/* 
+
+function Item({ title }) {
+  return (
+    <View style={style.item}>
+      <Text style={style.title}>{title}</Text> 
+      <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
+        step={1}
+        maximumValue={100}
+        onValueChange={this.change.bind(this)}
+        value={60}
+      />
+      <Button style={{height:0.1, marginTop:2,padding:'2%'}} title={"Off"}  />
+
+    <View>
+      <Text>
+       P: {value}
+      </Text>
+    </View>        
+      
+    </View>
+
+  );    
+}
+ */
