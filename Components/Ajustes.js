@@ -8,6 +8,8 @@ import {StyleSheet,
         Alert, 
         FlatList,
         Image,
+        TouchableHighlight,
+        TouchableOpacity
 
       } from 'react-native';
 
@@ -50,17 +52,20 @@ import { Icon } from 'react-native-elements'
           <View style={Styles.header}>
 
             <View style={Styles.headerLeft} >
-              <Image
-                style={Styles.image}
-                source={im}
-                />
+              <TouchableOpacity onLongPress={()=>this.longp()} >
+                <Image
+                  style={Styles.image}
+                  source={im}
+                  />
+              </TouchableOpacity>
             </View>
 
             <View style={Styles.headerRight} >
               <Button 
                 style={Styles.button}
+                title="Login"
                 onPress={()=>this.login()}
-                onLongPress={()=>this.longp()} >
+                 >
               </Button>
             </View>
 
@@ -72,7 +77,7 @@ import { Icon } from 'react-native-elements'
             <View style={Styles.bodyUp} >
               <Icon
                 //style={Styles.icon} 
-                name='Security' />
+                name='person' />
               <TextInput 
                 style={Styles.TextInputUp}
                 placeholder="Nombre"
@@ -84,7 +89,7 @@ import { Icon } from 'react-native-elements'
             <View style={Styles.bodyDown} >
               <Icon
                 //style={Styles.icon} 
-                name='Person'/>
+                name='security'/>
               <TextInput 
                 style={Styles.TextInputDown}
                 placeholder="Contraseña"
@@ -135,7 +140,8 @@ const Styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     //justifyContent: 'center',
-    paddingHorizontal:'3%'
+    paddingHorizontal:'10%',
+    paddingVertical:'10%'
   },
 
   text: {
@@ -157,9 +163,9 @@ const Styles = StyleSheet.create({
   image:{
     width:35,
     height:35,
-    /* borderColor:'purple',
-    borderWidth:2,
-    borderRadius:10, */
+    borderColor:'purple',
+    borderWidth:1.2,
+    borderRadius:10, 
   },
 
   headerRight:{
@@ -175,6 +181,7 @@ const Styles = StyleSheet.create({
   body:{
     flex:1,
     flexDirection:'column',
+    alignItems:'center'
   },
 
   bodyUp:{
@@ -202,32 +209,36 @@ const Styles = StyleSheet.create({
   },
 
   leg:{
+    flex:1,
     flexDirection:'column',
     justifyContent:'space-between',
-    alignContent:'center'
+    alignItems:'center',
+    margin:'3%'
   },
 
   footer:{
+    flex:1,
     flexDirection:'row',
     justifyContent:'space-between',
-    alignContent:'center',
+    alignItems:'center',
+    margin:'2%'
   },
 
   c1:{
-    width:3,
-    height:3,
+    width:25,
+    height:25,
     backgroundColor:'blue'
   },
 
   c2:{
-    width:3,
-    height:3,
+    width:25,
+    height:25,
     backgroundColor:'green'
   },
 
   c3:{
-    width:3,
-    height:3,
+    width:25,
+    height:25,
     backgroundColor:'yellow'
   },
 
