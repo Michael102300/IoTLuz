@@ -9,7 +9,9 @@ import {View,
   Button,
   Alert,
   TouchableHighlight,
-  Image
+  Image,
+  ScrollView,
+  AsyncStorage
 } from 'react-native'
 import { Icon } from 'react-native-elements'
 
@@ -20,7 +22,8 @@ import { ListItem } from 'react-native-elements';
 
 
 
-
+var i=0;
+var j=0;
 
 class Habitaciones extends Component{
 
@@ -29,9 +32,94 @@ class Habitaciones extends Component{
     this.state = {
       value: 50,
       vectid:0,
-      SliderInfo: ''
-      
+      SliderInfo:'',
+      ButtonState:'Off',
+      ButtonValue: 0,
+      Val:'',
     };
+  }
+
+
+
+  HabitationList = (title) =>{
+
+    return(
+
+      
+        <View style={style.item}>
+          
+            <View style={{flexDirection:'column',justifyContent:'space-between'}}>
+              <Text style={style.title}>{title}</Text> 
+              <TouchableHighlight  onLongPress={()=>this.editar()}  onPress={()=>this.OnOff()} >
+                <Image style={Styles.image} source={im}  />
+              </TouchableHighlight>
+            </View>
+              
+            <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
+              step={1}
+              maximumValue={100}
+              onValueChange={ value => {this.setState({value: value}), 
+                              this.setState({SliderInfo: title.toString() + ":" + value})} } // Se añade el cuarto y el valor del slider a la variavle SliderInfo                             value => {this.Sliderval(value,parseInt(params.id))}
+              value={65}
+            />
+          
+        </View>
+      
+
+    )
+  }
+
+
+
+  List = () => {
+    return(
+      DATA.map((x,i) => {
+        if(i){
+          let b='off';
+          return(
+            <View style={style.item} key={i} >
+              <View style={{flexDirection:'column',justifyContent:'space-between'}}>
+                <Text style={{fontSize:12,alignSelf:'center'}}>{x.title}</Text> 
+                <TouchableHighlight  onLongPress={()=>this.editar()}  onPress={()=>this.OnOff()} >
+                  <Image style={Styles.image} source={im}  />
+                </TouchableHighlight>
+              </View>
+              <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
+                step={1}
+                maximumValue={100}
+                onValueChange={ value => {this.setState({value: value}), 
+                                this.setState({
+                                              SliderInfo: x.title.toString() + ":" + value,
+                                              val:value
+                                              })
+                                          }
+                              } // Se añade el cuarto y el valor del slider a la variavle SliderInfo                             value => {this.Sliderval(value,parseInt(params.id))}
+                value={65}
+              />
+              <View style={{width:'17%',height:'5%',paddingVertical:'0%',justifyContent:'center'}} >
+                <Button
+                  key={i}
+                  title={this.state.ButtonState}  //title={this.state.ButtonState}
+                  onPress={
+                    ()=>{
+                      if(j){
+                        this.setState({ButtonState: 'Off',SliderInfo: x.title.toString() + ':0'})
+                        j=!j
+                      }else{
+                        this.setState({ButtonState: 'ON',SliderInfo: x.title.toString() + ':100'})
+                        j=!j
+                      }
+                    }
+                  } //onPress={i?this.setState({value:0}):this.setState({value:100})}  //onPress={()=>this.OnOff(x.title)}
+                >
+                </Button>
+              </View>
+
+            </View>
+          )
+      }
+      })
+    )
   }
 
   agregar = () =>{
@@ -47,8 +135,20 @@ class Habitaciones extends Component{
     Alert.alert('Editar')
   }
 
-  OnOff = () =>{
-    Alert.alert('OnOFF')
+  OnOff (room) {
+    
+    if(i){
+      this.setState({ButtonState: 'Off',SliderInfo: room.toString() + ':0'})
+      //this.setState({SliderInfo: room.toString() + '0'})
+      i=!i
+      
+    }else{
+      this.setState({ButtonState: 'On', SliderInfo: room.toString() + ':100'})
+      //this.setState({SliderInfo: room.toString() + '100'})
+      i=!i
+    }
+
+    //Alert.alert('OnOFF')
   }
 
 
@@ -102,37 +202,9 @@ class Habitaciones extends Component{
 
 
               <View style={Styles.containerr}>
-
-                <FlatList
-                  data={DATA}
-                  //renderItem={({ item }) => <Item title={item.title} />}
-                  renderItem={({ item }) => (
-
-                        <View style={style.item}>
-                          
-                            <View style={{flexDirection:'column',justifyContent:'space-between'}}>
-                              <Text style={style.title}>{item.title}</Text> 
-                              <TouchableHighlight  onLongPress={()=>this.editar()}  onPress={()=>this.OnOff()} >
-                                <Image style={Styles.image} source={im}  />
-                              </TouchableHighlight>
-                            </View>
-                             
-                            <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
-                              step={1}
-                              maximumValue={100}
-                              onValueChange={ value => {this.setState({value: value}), 
-                                              this.setState({SliderInfo: item.title.toString() + ":" + value})} } // Se añade el cuarto y el valor del slider a la variavle SliderInfo                             value => {this.Sliderval(value,parseInt(params.id))}
-                              value={65}
-                            />
-
-                        </View>
-
-                      )}
-                  keyExtractor={item => item.id}
-                />
-
-
-
+                <ScrollView>
+                  {this.List()}
+                </ScrollView>
               </View>
 
               <View /* Se imprime el valor de la informacion del slider ej: sala:15*/>
@@ -149,6 +221,41 @@ class Habitaciones extends Component{
 
     }
 }
+
+
+
+/* 
+<FlatList
+                  data={DATA}
+                  //renderItem={({ item }) => <Item title={item.title} />}
+                  renderItem={({ item }) => this.HabitationList(item.title)
+
+                         <View style={style.item}>
+                          
+                            <View style={{flexDirection:'column',justifyContent:'space-between'}}>
+                              <Text style={style.title}>{item.title}</Text> 
+                              <TouchableHighlight  onLongPress={()=>this.editar()}  onPress={()=>this.OnOff()} >
+                                <Image style={Styles.image} source={im}  />
+                              </TouchableHighlight>
+                            </View>
+                             
+                            <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
+                              step={1}
+                              maximumValue={100}
+                              onValueChange={ value => {this.setState({value: value}), 
+                                              this.setState({SliderInfo: item.title.toString() + ":" + value})} } // Se añade el cuarto y el valor del slider a la variavle SliderInfo                             value => {this.Sliderval(value,parseInt(params.id))}
+                              value={65}
+                            />
+
+                        </View> 
+
+                      }
+                      keyExtractor={item => item.id}
+                    />
+ */
+
+
+
 const Styles = StyleSheet.create({
 
   containerr: {

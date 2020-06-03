@@ -16,6 +16,7 @@ import Ajustes from './Components/Ajustes'
 
 
 
+
 export default createAppContainer(createBottomTabNavigator(
 
   {
