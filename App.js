@@ -24,6 +24,7 @@ const AddStack = createStackNavigator(
   {
     headerMode:'none'
   }
+  
 );
 
 const LoginStack = createStackNavigator(
