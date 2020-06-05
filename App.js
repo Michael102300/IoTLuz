@@ -5,24 +5,42 @@ import {  createAppContainer} from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Icon } from 'react-native-elements'
 import { Ionicons } from '@expo/vector-icons';
-//import {createStackNavigator} from 'react-navigation-stack'
+import {createStackNavigator} from 'react-navigation-stack'
 
 //Screens
 import Agregar from './Components/Agregar'
 import Inicio from './Components/Inicio'
 import Habitaciones from './Components/Habitaciones'
 import Ajustes from './Components/Ajustes'
+import Register from './Components/Register'
 
 
 
+const AddStack = createStackNavigator(
+  {
+  Habitaciones: Habitaciones,
+  Agregar:  Agregar,
+  },
+  {
+    headerMode:'none'
+  }
+);
 
+const LoginStack = createStackNavigator(
+  {
+  Inicio: Inicio,
+  Register:  Register,
+  },
+  {
+    headerMode:'none'
+  }
+);
 
 export default createAppContainer(createBottomTabNavigator(
 
   {
-    Inicio:Inicio,
-    Habitaciones:Habitaciones,
-    Agregar:Agregar,
+    Inicio:LoginStack,
+    Habitaciones:AddStack,
     Ajustes:Ajustes
   },
 
@@ -44,7 +62,7 @@ export default createAppContainer(createBottomTabNavigator(
         // You can return any component that you like here! We usually use an
         // icon component from react-native-vector-icons
         return <Icon name={iconName} size={25} color={tintColor} />;
-      },
+      }
 
     }),
     tabBarOptions: {

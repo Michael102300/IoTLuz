@@ -169,6 +169,8 @@ const Styles = StyleSheet.create({
       flexDirection:'row',
       padding:'2%',
       alignSelf:'center',
+      borderBottomColor:'black',
+      borderBottomWidth:0.5
       //borderWidth:0.35,
       //borderColor:'gray',
       

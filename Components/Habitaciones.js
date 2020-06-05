@@ -40,38 +40,8 @@ class Habitaciones extends Component{
   }
 
 
-
-  HabitationList = (title) =>{
-
-    return(
-
-      
-        <View style={style.item}>
-          
-            <View style={{flexDirection:'column',justifyContent:'space-between'}}>
-              <Text style={style.title}>{title}</Text> 
-              <TouchableHighlight  onLongPress={()=>this.editar()}  onPress={()=>this.OnOff()} >
-                <Image style={Styles.image} source={im}  />
-              </TouchableHighlight>
-            </View>
-              
-            <Slider style={{alignItems:'center', flex:1, paddingVertical:'5%'}}
-              step={1}
-              maximumValue={100}
-              onValueChange={ value => {this.setState({value: value}), 
-                              this.setState({SliderInfo: title.toString() + ":" + value})} } // Se añade el cuarto y el valor del slider a la variavle SliderInfo                             value => {this.Sliderval(value,parseInt(params.id))}
-              value={65}
-            />
-          
-        </View>
-      
-
-    )
-  }
-
-
-
   List = () => {
+    ButtonOnOff=[];
     return(
       DATA.map((x,i) => {
         if(i){
@@ -80,7 +50,7 @@ class Habitaciones extends Component{
             <View style={style.item} key={i} >
               <View style={{flexDirection:'column',justifyContent:'space-between'}}>
                 <Text style={{fontSize:12,alignSelf:'center'}}>{x.title}</Text> 
-                <TouchableHighlight  onLongPress={()=>this.editar()}  onPress={()=>this.OnOff()} >
+                <TouchableHighlight  onLongPress={()=>this.editar()}  onPress={()=>this.OnOff(x.title)} >
                   <Image style={Styles.image} source={im}  />
                 </TouchableHighlight>
               </View>
@@ -96,25 +66,6 @@ class Habitaciones extends Component{
                               } // Se añade el cuarto y el valor del slider a la variavle SliderInfo                             value => {this.Sliderval(value,parseInt(params.id))}
                 value={65}
               />
-              <View style={{width:'17%',height:'5%',paddingVertical:'0%',justifyContent:'center'}} >
-                <Button
-                  key={i}
-                  title={this.state.ButtonState}  //title={this.state.ButtonState}
-                  onPress={
-                    ()=>{
-                      if(j){
-                        this.setState({ButtonState: 'Off',SliderInfo: x.title.toString() + ':0'})
-                        j=!j
-                      }else{
-                        this.setState({ButtonState: 'ON',SliderInfo: x.title.toString() + ':100'})
-                        j=!j
-                      }
-                    }
-                  } //onPress={i?this.setState({value:0}):this.setState({value:100})}  //onPress={()=>this.OnOff(x.title)}
-                >
-                </Button>
-              </View>
-
             </View>
           )
       }
@@ -165,7 +116,7 @@ class Habitaciones extends Component{
           <View style={Styles.container}>
 
 
-              <View style = {Styles.header}>
+{/*               <View style = {Styles.header}>
 
 
                 <View style={{paddingLeft:'3%', 
@@ -196,21 +147,35 @@ class Habitaciones extends Component{
                     <Icon name={"add"}  size={30} color="#01a699" />
                   </TouchableOpacity>
                 </View>
-
-
-              </View>
+              </View> */}
 
 
               <View style={Styles.containerr}>
                 <ScrollView>
                   {this.List()}
-                </ScrollView>
+                </ScrollView>               
               </View>
 
-              <View /* Se imprime el valor de la informacion del slider ej: sala:15*/>
-                <Text >
-                  {SliderInfo}
-                </Text>
+              <Text>
+                {SliderInfo}
+              </Text>
+
+
+              <View  style={Styles.footer} >
+                <View style={Styles.habitationInfo} >
+                  <Text style= {Styles.paragraph}   > 
+                    Habitaciones: {navigation.getParam('id',0)} 
+                  </Text>
+                </View>
+
+                <View style={Styles.addButton}>
+                  <TouchableOpacity  
+                    style={Styles.addTouchale}
+                    onPress={()=>this.agregar()}
+                  >
+                    <Icon name={"add"}  size={30} color="#01a699" />
+                  </TouchableOpacity>
+                </View>
               </View> 
 
           </View>
@@ -261,7 +226,8 @@ const Styles = StyleSheet.create({
   containerr: {
     flex: 4.7,
     marginHorizontal:'4%',
-    marginVertical:'1%'
+    marginTop:50
+    //marginBottom:'0%'
     //marginTop: Constants.statusBarHeight,
   },
 
@@ -271,12 +237,36 @@ const Styles = StyleSheet.create({
     borderRadius:3,
   },
 
-
-  container :{
-    flex : 1.1,
-    backgroundColor : 'white'
+  habitationInfo:{
+    backgroundColor: 'rgba(5,5,15,0.01)',
+    borderColor:'black',
+    borderWidth:0.5,
+    margin:'2%'
   },
 
+  addButton:{
+    paddingHorizontal:'0%',
+    paddingStart:'0%', 
+    alignSelf:'flex-end',
+    margin:'2%',
+  },
+
+  addTouchale:{
+    borderWidth:1,
+    borderColor:'black', //rgba(0,0,0,0.2)
+    alignItems:'center',
+    justifyContent:'center',
+    width:40,
+    height:40,
+    backgroundColor:'#fff',
+    borderRadius:50,
+    backgroundColor: 'rgba(5,5,15,0.1)',
+  },
+
+  container :{
+    flex : 1,
+    backgroundColor : 'white',
+  },
 
   header: {
     flex: 1.5,
@@ -286,7 +276,8 @@ const Styles = StyleSheet.create({
     //backgroundColor: 'rgba(5,5,15,0.1)',
     //borderColor:'black',
     //borderWidth:1,
-    marginHorizontal:'3%',
+    marginHorizontal:'5%',
+    marginTop:'5%'
     //paddingTop:'6%'
   },
 
@@ -296,18 +287,17 @@ const Styles = StyleSheet.create({
     color : 'rgba(90,40,130,0.9))',
     textAlign : 'center',
     textDecorationColor:'rgba(2,20,202,1)',
-    textDecorationStyle:'solid'
+    textDecorationStyle:'solid',
+    margin:'1%'
    },
 
 
   footer:{
-    flex: 0.3,
-    paddingVertical:'2%',
-    margin: 1,
-    justifyContent: 'space-around',
-    flexDirection : 'row',
-    alignItems: 'flex-end',
-    marginBottom: 5
+    flexDirection:'row',
+    justifyContent:'space-between',
+    backgroundColor: 'rgba(5,5,15,0.1)',
+    borderTopColor:'black',
+    borderWidth:0.6,
   },
   
 })

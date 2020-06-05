@@ -70,14 +70,11 @@ class Inicio extends Component{
               </View>
           </View>
 
-
           <View style={Styles.buttonS} >
-            <Button title={"Entrar"}  />
+            <Button title={"Entrar"} style={{marginVertical:'2%'}} />
+            <Button title={"Registrarme"}  style={{marginVertical:'2%'}} onPress={()=>this.reg()} />
           </View>
 
-          <View style={Styles.buttonS} >
-            <Button title={"Registrarme"} onPress={this.reg} />
-          </View>
 
 
         </View>
@@ -138,12 +135,16 @@ const Styles = StyleSheet.create({
     fontSize:15,
     alignSelf:'flex-start',
     paddingVertical:'1%',
+    //borderBottomColor:'black',
+    //borderBottomWidth:0.5
   },
 
   icnonInput:{
     flexDirection:'row',
     padding:'2%',
     alignSelf:'center',
+    borderBottomColor:'black',
+    borderBottomWidth:0.5
     //borderWidth:0.35,
     //borderColor:'gray',
     
@@ -158,10 +159,12 @@ const Styles = StyleSheet.create({
   },
 
   buttonS:{
-    paddingVertical:'4%',
+    paddingVertical:'5%',
     paddingHorizontal:'17%',
     flex:1,
-    alignContent:'center'
+    flexDirection:'column',
+    justifyContent:'space-between'
+    //alignContent:'center'
   },
   
 })
